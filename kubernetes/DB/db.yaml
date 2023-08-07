@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: onlinebookstoreDB
-        image: 
+        image: ptanmay0071/bookstoremysql
         ports:
         - name: onlinebookstore-port
           containerPort: 3306

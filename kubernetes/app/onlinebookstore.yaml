@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: onlinebookstoreAPP
-        image: ptanmay0071/reservation:latest
+        image: ptanmay0071/bookstore:latest
         ports:
         - name: onlinebookstoreapp-port
           containerPort: 8080
