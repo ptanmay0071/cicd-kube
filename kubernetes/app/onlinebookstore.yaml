@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: onlinebookstoreapp
+  labels: 
+    app: onlinebookstoreapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: onlinebookstoreapp
+  template:
+    metadata:
+      labels:
+        app: onlinebookstoreapp
+    spec:
+      containers:
+      - name: onlinebookstoreAPP
+        image: ptanmay0071/reservation:latest
+        ports:
+        - name: onlinebookstoreapp-port
+          containerPort: 8080
+      initContainers:
+      - name: init-mydb
+        image: busybox
+        command: ['sh', '-c', 'until nslookup onlinebookstoredb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;']
+     
