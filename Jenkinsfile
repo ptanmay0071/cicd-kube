@@ -79,7 +79,7 @@ pipeline {
          stage('Kubernetes Deploy') {
 	  agent { label 'KOPS' }
             steps {
-                    sh "helm upgrade --install --force reservation-stack helm/reservationcharts --set appimage=${registry}:${BUILD_NUMBER} --namespace prod"
+                    sh "helm upgrade --install --force onlinebookstore-stack helm/onlinebookstorecharts --set appimage=${registry}:${BUILD_NUMBER} --namespace prod"
             }
         }
     }
